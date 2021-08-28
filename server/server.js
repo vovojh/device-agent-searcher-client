@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const conn = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -43,8 +43,6 @@ app.get('/paragraph', function (req, res) {
     res.statusCode = 200;
     res.end(JSON.stringify(results));
   });
-
-  conn.end();
 })
 
 const server = app.listen(5000, function () {
